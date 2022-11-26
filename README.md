@@ -55,42 +55,78 @@ D7 = X Y Z
 ## Figure -04 8 to 3 Decoder implementation 
 
 ### Procedure
-/* write all the steps invloved */
+1. Open the quartus II software
 
+2. Create a new project.
 
+3. Name the projects such that the same name is used for mentioning the name of the module.
 
+4. Develop programmes for both Encoder and Decoder using verilog programming.
+
+5. Run RTL Simulation.
+
+6. Create the Timing diagram.
+
+7. Validate the outputs.
 ### PROGRAM 
-/*
+~~~
 Program for Endocers and Decoders  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+Developed by: Ranjith D
+RegisterNumber: 212221240044
+~~~
+#### Encoder:
+~~~
+module encoder(a,b,c,d0,d1,d2,d3,d4,d5,d6,d7);
+output a,b,c;
+input d0,d1,d2,d3,d4,d5,d6,d7;
+or(a,d4,d5,d6,d7);
+or(b,d2,d3,d6,d7);
+or(c,d1,d3,d5,d7);
+endmodule
+~~~
+#### Decoder:
+~~~
+module decoder(d0,d1,d2,d3,d4,d5,d6,d7,a,b,c);
+output d0,d1,d2,d3,d4,d5,d6,d7;
+input a,b,c;
+assign d0 = (~a&~b&~c);
+assign d1 = (~a&~b&c);
+assign d2 = (~a&b&~c);
+assign d3 = (~a&b&c);
+assign d4 = (a&~b&~c);
+assign d5 = (a&~b&c);
+assign d6 = (a&b&~c);
+assign d7 = (a&b&c);
+endmodule
+~~~
+
+
+
+### OUTPUT:
+#### RTL LOGIC  
+##### Encoder
+![](https://github.com/Akash020803/Experiment-08-Encoders-and-decoders-/blob/main/encodert.png)
+##### Decoder
+![](https://github.com/Akash020803/Experiment-08-Encoders-and-decoders-/blob/main/decoderrt.png)
+
+#### TIMING DIGRAMS  
+##### Encoder
+![](https://github.com/Akash020803/Experiment-08-Encoders-and-decoders-/blob/main/entim.png)
+##### Decoder
+![](https://github.com/Akash020803/Experiment-08-Encoders-and-decoders-/blob/main/detim.png)
 
 
 
 
-
-
-### RTL LOGIC  
-
-
-
-
-
-
-
-
-### TIMING DIGRAMS  
-
-
-
-
-
-### TRUTH TABLE 
-
+#### TRUTH TABLE 
+##### Encoder
+![](https://github.com/Akash020803/Experiment-08-Encoders-and-decoders-/blob/main/enTruth.png)
+##### Decoder
+![](https://github.com/Akash020803/Experiment-08-Encoders-and-decoders-/blob/main/deTruth.png)
 
 
 
 
 
 ### RESULTS 
+Therefore 8 to 3 Encoder and 3to8 Decoder are implemented successfully using verilog and validate its outputs
